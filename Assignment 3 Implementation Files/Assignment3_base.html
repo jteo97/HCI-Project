@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Assignment 3 Base code Adapted from W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="Css.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif}
+.w3-bar-block .w3-bar-item {padding: 16px}
+</style>
+<body>
+
+<!-- Side Navigation -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card" style="z-index:3;width:320px;" id="mySidebar">
+  
+  <!--picture of cloud taken from https://design.tutsplus.com/tutorials/how-to-create-a-cloud-icon-in-adobe-xd--cms-30551-->
+  <img src="cloud.png" style="width: 60px;">
+  <a style="color: purple; font-family:Verdana; font-size: xx-large;"><b>SkyShare</b></a>
+  <img src="cloud.png" style="width: 60px;">
+  <a class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id04').style.display='block'">New Project <i class="fa fa-plus"></i></a>
+    
+  <!-- Dropdown box of projects -->
+  <a id="myBtn" onclick="myFunc('projects')" class="w3-bar-item w3-button w3-large">Projects<i class="fa fa-caret-down w3-margin-left"></i></a>
+    
+  <div id="projects" class="w3-hide w3-animate-left">
+      
+    <!-- Dropdown box of Tasks -->
+    <a id="myBtn" onclick="myFunc('Tasklist')" class="w3-bar-item w3-button w3-large w3-light-grey">HCI Project<i class="fa fa-caret-down w3-margin-left"></i></a>
+    <div id="Tasklist" class="w3-hide w3-animate-left">
+          
+      <!-- These are the tasks -->
+      <label for="check1">
+        <a class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" id="firstTab">
+          <div class="w3-container">
+            <p style="margin-top: -10px; margin-bottom: -5px; float: right; font-size: small;">May 1</p>
+          <input id="check1" type="checkbox" class="w3-check"> <span class=" w3-medium">Implement webpage</span> </input>
+          <p style="margin-top: 1px; margin-bottom: -12px; float: right; font-size: small; margin-left: 30px;">Justin T</p>
+        </div>
+           </a>
+      </label>
+        
+          <label for="check2">
+        <a class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" id="firstTab">
+        <div class="w3-container">
+          <p style="margin-top: -10px; margin-bottom: -5px; float: right; font-size: small;">May 1</p>
+          <input id="check2" type="checkbox" class="w3-check"> <span class=" w3-medium">Change font colour</span> </input>
+          <p style="margin-top: 1px; margin-bottom: -12px; float: right; font-size: small; margin-left: 30px;">Maric K</p>
+        </div>
+        </a>
+      </label>
+      
+      <label for="check3">
+        <a class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" id="firstTab">
+        <div class="w3-container">
+          <p style="margin-top: -10px; margin-bottom: -5px; float: right; font-size: small;">May 3</p>
+          <input id="check3" type="checkbox" class="w3-check"><span class=" w3-medium"> Add Upload function</span></input>
+          <p style="margin-top: 1px; margin-bottom: -12px; float: right; font-size: small; margin-left: 30px;">Blake H</p>
+        </div>
+        </a>
+      </label>
+
+      <label for="check4">
+        <a class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" id="firstTab">
+        <div class="w3-container">
+          <p style="margin-top: -10px; margin-bottom: -5px; float: right; font-size: small;">May 20</p>
+          <input id="check4" type="checkbox" class="w3-check"><span class=" w3-medium"> Comment the code</span></input>
+          <p style="margin-top: 1px; margin-bottom: -12px; float: right; font-size: small; margin-left: 30px;">All members</p>
+        </div>
+        </a>
+      </label>
+      <!-- Button to add new task (not implemented) -->
+      <a class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey">
+        <div class="w3-container">
+          <span class=" w3-medium">Add new task <i class="fa fa-plus"></i></span>
+        </div>
+      </a>
+      
+      <!-- Other Project Buttons (not implemented) -->
+    </div>
+     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-top w3-border-black test w3-hover-light-grey" >
+      <div class="w3-container" style="margin-left: -22px;">
+      <span class="w3-opacity w3-large">364 Project<i class="fa fa-caret-down w3-margin-left"></i></span>
+      </div>
+    </a>
+      
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom w3-border-top test w3-hover-light-grey" >
+      <div class="w3-container" style="margin-left: -22px;">
+        <span class="w3-opacity w3-large">Assignment 3<i class="fa fa-caret-down w3-margin-left"></i></span>
+      </div>
+    </a>
+      
+  </div>
+</nav>
+
+<!-- Modal that pops up when you click on "Add new Collaborator" -->
+<div id="id02" class="w3-modal" style="z-index:5">
+  <div class="w3-modal-content w3-animate-zoom">
+       <!-- Heading Banner for Pop-up -->
+    <div class="w3-container w3-padding w3-purple">
+       <span onclick="document.getElementById('id02').style.display='none'"
+       class="w3-button w3-purple w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
+      <h2>Add New Collaborator / Share Your Project</h2>
+    </div>
+   
+ <!-- Contents of the Pop-up Modal -->
+    <div class="w3-panel">
+      <p>New Collaborator</p>
+      <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="New collaborator - E.g skim772@aucklanduni.ac.nz"> 
+
+      <!-- Current Project Owner -->
+      <div class="w3-row-padding">
+        <div class="w3-half">
+          <label>Current Project Owner:</label>
+          <div class="w3-card-4 w3-white" style="width:60%; margin-bottom:10px; margin-top: 10px; margin-left: 60px;" >
+      
+            <div class="w3-container w3-center">
+              <!--Picture used with permission from Maric Kim-->
+              <img src="./Sample.jpg" alt="Avatar" style="width:90%; padding-top: 15px;">
+              <h5>Maric Kim</h5>
+            </div>
+          </div>
+        </div>
+
+        <!-- Permission Options -->
+        <div class="w3-half">
+            <label>Invite With:</label>
+            <p>
+            <input class="w3-radio" type="radio" name="gender" value="Viewing Permission">
+            <label>Viewing Permission</label></p>
+            <p>
+            <input class="w3-radio" type="radio" name="gender" value="Commenting Permission">
+            <label>Commenting Permission</label></p>
+            <p>
+            <input class="w3-radio" type="radio" name="gender" value="Editing Permission">
+            <label>Editing Permission</label></p>
+            <p>
+              <input class="w3-radio" type="radio" name="gender" value="Downloading Permission">
+              <label>Downloading Permission</label></p>
+        </div>
+      </div>
+
+    <p> Invite Message </p>
+      <input class="w3-input w3-border w3-margin-bottom" style="height:50px" placeholder="Message">
+      <!-- Buttons for cancel and share -->
+      <div class="w3-section">
+        <a class="w3-button w3-gray" onclick="document.getElementById('id02').style.display='none'">Cancel  <i class="fa fa-remove"></i></a>
+        <a class="w3-button w3-purple w3-right" onclick="document.getElementById('id02').style.display='none'; sharealert();">Share  <i class="fa fa-paper-plane"></i></a> 
+      </div> 
+  </div> 
+    </div>
+  </div>
+</div>
+
+<!-- Modal that pops up when you click on "Merge" -->
+<div id="id03" class="w3-modal" style="z-index:5">
+  <div class="w3-modal-content w3-animate-zoom">
+    <!-- Heading Banner -->
+    <div class="w3-container w3-padding w3-purple">
+       <span onclick="document.getElementById('id03').style.display='none'"
+       class="w3-button w3-purple w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
+      <h2>Merge/Upload Files</h2>
+    </div>
+   
+    <div class="w3-panel">
+      <label>You may choose to upload a new file to the project, or update an existing file with a newer version from your local pc.</label><p>
+      <div class="w3-row-padding">
+        <!-- Upload Files to Merge to an existing file -->
+        <div class="w3-half">
+          <label>Merge With Existing Files</label>
+          <p>
+          <input type="file" id="myFile" name="filename">
+        </div>
+        <div class="w3-half">
+          <!-- Upload Files to add a new file -->
+          
+            <label>Upload a New File</label>
+            <p>
+                <input type="file" id="myFile" name="filename">
+        </div>
+      </div>
+      <div class="w3-section">
+        <!-- Buttons to Cancel and Merge/Upload -->
+        <a class="w3-button w3-gray" onclick="document.getElementById('id03').style.display='none'">Cancel  <i class="fa fa-remove"></i></a>
+        <a class="w3-button w3-right w3-purple" onclick="document.getElementById('id03').style.display='none'; sharealert();">Merge/Upload  <i class="fa fa-paper-plane"></i></a> 
+      </div> 
+  </div> 
+    </div>
+  </div>
+</div>
+
+<!-- Modal that pops up when you click on "New Project" -->
+<div id="id04" class="w3-modal" style="z-index:5">
+  <div class="w3-modal-content w3-animate-zoom">
+    <!-- Heading Banner -->
+    <div class="w3-container w3-padding w3-purple">
+       <span onclick="document.getElementById('id04').style.display='none'"
+       class="w3-button w3-purple w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
+      <h2>Create a New Project</h2>
+    </div>
+    <p>
+      
+    <div class="w3-panel">
+      <!-- Contents for the Pop-up modal -->
+      <label>Project Name</label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Project Name - E.g 351 Ass_1"> 
+      
+        <label>Root Folder Name</label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Foldername - E.g Database, Reading Log"> 
+      <div class="w3-row-padding">
+        <div class="w3-half">
+          <label>Add a file to this project  </label>
+          <p style="font-size: 11px;"> *ONLY ONE FILE MUST BE ADDED</p>
+          <input type="file" id="myFile" name="filename">
+        </div>
+        <!-- Project Accessbility -->
+        <div class="w3-half">
+            <label>Project Accessbility:</label>
+            <p>
+            <input class="w3-radio" type="radio" name="Accessbility" value="Private">
+            <label>Private</label></p>
+            <p>
+            <input class="w3-radio" type="radio" name="Accessbility" value="Public">
+            <label>Public</label></p>
+        </div>
+      </div>
+<p>
+  <!-- Add collaborators to the newly-created projects -->
+      <label>Would you like to collaborate with anyone for this new project? </label>
+        <p style="font-size: 12px;"> (They will become co-owners of this project)</p>
+      <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="New collaborator - E.g skim772@aucklanduni.ac.nz"> 
+    <p> Invite Message </p>
+      <input class="w3-input w3-border w3-margin-bottom" style="height:50px" placeholder="Message">
+      <div class="w3-section">
+        <a class="w3-button w3-gray" onclick="document.getElementById('id04').style.display='none'">Cancel  <i class="fa fa-remove"></i></a>
+        <a class="w3-button w3-purple w3-right" onclick="document.getElementById('id04').style.display='none'; createalert();">Create <i class="fa fa-plus-square"></i></a> 
+      </div> 
+  </div> 
+    </div>
+  </div>
+</div>
+
+
+<!-- Overlay effect when opening the side navigation on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
+
+<!-- Page content -->
+<div class="flex-container" style="margin-left:340px; display:flex; justify-content: space-between;">
+
+  <div style="padding-right: 10px; width: 80%">
+  <!--header div-->
+  <div class="title">
+    <div style="display: flex; align-items: center;">
+    <h1 style="font-size: xxx-large;"><b>HCI Project</b></h1>
+    <p style="color: white; opacity: 0%;">__</p>
+    <button class="btn" onclick="downloadalert('Project')" style="margin: 0px; height: 50%;"><i class="fa fa-mail-forward"></i> Export Project</button>
+  </div>
+    <div class="dropdown">
+      <button class="dropbtn" >Collaborators <i class="fa fa-caret-down w3-margin-left"></i> </button >
+      <div class="dropdown-content">
+        <a>Blake Hattingh</a>
+        <a style="border-top: 1px solid lightgrey">Gurpreet Singh</a>
+        <a style="border-top: 1px solid lightgrey">Maric Kim</a>
+        <a style="border-top: 1px solid lightgrey">Justin Teo</a>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id02').style.display='block'">Add New Collaborator + <i class="w3-padding fa fa-pencil"></i></a>
+      </div>
+    </div>
+  </div>
+  <!--breadcrumb div-->
+  <div class="breadcrumb">
+
+  <h2 id="breadcrumb">HCI/Src</h2>
+  </div>
+  <!--folder div-->
+  <div class="folder" style="overflow:hidden">
+<!--Picture of folder taken from https://commons.wikimedia.org/wiki/File:Folder_5_icon-72a7cf.svg-->
+<div class="container">
+    <img id="firstfolder" class="foldericon" src="folderimg.png" alt="folder icon" onclick="changeBreadcrumb('Src'); doShare('list1'); highlight(this)"> 
+    <div class="centered"  onclick="changeBreadcrumb('Src'); doShare('list1'); highlightOuter('firstfolder')">.Src</div>
+  </div>
+  <div class="container">
+    <img id="Css" class="foldericon" src="folderimg.png" alt="folder icon"  onclick="changeBreadcrumb('Css'); doShare('list2'); highlight(this)"> 
+    <div class="centered" onclick="changeBreadcrumb('Css'); doShare('list2'); highlightOuter('Css')">.Css</div>
+  </div>
+  <div class="container">
+    <img id="HTML"  class="foldericon" src="folderimg.png" alt="folder icon"  onclick="changeBreadcrumb('HTML'); doShare('list3'); highlight(this)"> 
+    <div class="centered" onclick="changeBreadcrumb('HTML'); doShare('list3'); highlightOuter('HTML')">.HTML</div>
+  </div> 
+  <div class="container">
+    <img id="Js"  class="foldericon" src="folderimg.png" alt="folder icon"  onclick="changeBreadcrumb('Js'); doShare('list4'); highlight(this)"> 
+    <div class="centered" onclick="changeBreadcrumb('Js'); doShare('list4'); highlightOuter('Js')">.Js</div>
+  </div>
+  <div class="container">
+    <img id="Other"  class="foldericon" src="folderimg.png" alt="folder icon"  onclick="changeBreadcrumb('Other'); doShare('list5'); highlight(this)"> 
+    <div class="centered" onclick="changeBreadcrumb('Other'); doShare('list5'); highlightOuter('Other')">Other</div>
+  </div>
+  </div>
+  <div style="display: flex; justify-content: space-between; margin-top: -15px;">
+    <div></div>
+    <div class="dropdown" style="margin-bottom: 10px;">
+      <button class="dropbtn">Sort by <i class="fa fa-caret-down w3-margin-left"></i> </button >
+      <div class="dropdown-content">
+        <a class="dropdownItem">File Name</a>
+        <a class="dropdownItem" style="border-top: 1px solid lightgrey">Last modified</a>
+      </div>
+    </div>
+  </div>
+  <!--file list div-->
+  <div style="border: 2px solid lightgrey; padding-bottom: 50px;">
+    
+<div id="list1" class="list">
+  <div class="fileheader">
+    <div></div>
+    <p><b>File Name</b></p>
+    <p style="padding-right: 10px;"><b>Last Modified</b></p>
+  </div>
+  <!--Picture of file taken from https://publicdomainvectors.org/en/free-clipart/Generic-file-icon/67197.html-->
+  <div class="files" onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>picture1.png</h4>
+<p>10 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>picture2.png</h4>
+<p>15 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>picture3.png</h4>
+<p>20 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>picture4.png</h4>
+<p>26 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>picture5.png</h4>
+<p>50 minutes ago</p>
+  </div>
+</div>
+<div id="list2" class="list">
+  <div class="fileheader">
+    <div></div>
+    <p><b>File Name</b></p>
+    <p style="padding-right: 10px;"><b>Last Modified</b></p>
+  </div>
+  <!--Picture of file taken from https://publicdomainvectors.org/en/free-clipart/Generic-file-icon/67197.html-->
+  <div class="files" onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>Css1.css</h4>
+<p>11 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>Css2.css</h4>
+<p>16 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>Css3.css</h4>
+<p>21 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>Css4.css</h4>
+<p>27 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>Css5.css</h4>
+<p>51 minutes ago</p>
+  </div>
+</div>
+<div id="list3" class="list">
+  <div class="fileheader">
+    <div></div>
+    <p><b>File Name</b></p>
+    <p style="padding-right: 10px;"><b>Last Modified</b></p>
+  </div>
+  <!--Picture of file taken from https://publicdomainvectors.org/en/free-clipart/Generic-file-icon/67197.html-->
+  <div class="files" onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>index.html</h4>
+<p>12 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>home.html</h4>
+<p>17 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>login.html</h4>
+<p>22 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>contact.html</h4>
+<p>28 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>map.html</h4>
+<p>52 minutes ago</p>
+  </div>
+</div>
+<div id="list4" class="list">
+  <div class="fileheader">
+    <div></div>
+    <p><b>File Name</b></p>
+    <p style="padding-right: 10px;"><b>Last Modified</b></p>
+  </div>
+  <!--Picture of file taken from https://publicdomainvectors.org/en/free-clipart/Generic-file-icon/67197.html-->
+  <div class="files" onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>app.js</h4>
+<p>13 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>app2.js</h4>
+<p>18 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>app3.js</h4>
+<p>23 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>app4.js</h4>
+<p>29 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>app5.js</h4>
+<p>53 minutes ago</p>
+  </div>
+</div>
+<div id="list5" class="list">
+  <div class="fileheader">
+    <div></div>
+    <p><b>File Name</b></p>
+    <p style="padding-right: 10px;"><b>Last Modified</b></p>
+  </div>
+  <!--Picture of file taken from https://publicdomainvectors.org/en/free-clipart/Generic-file-icon/67197.html-->
+  <div class="files" onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>hello.mp4</h4>
+<p>14 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>drum.mp4</h4>
+<p>19 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>piano.mp4</h4>
+<p>24 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>violin.mp4</h4>
+<p>30 minutes ago</p>
+  </div>
+  <div class="files"  onclick="selected(this)">
+    <img class="fileicon" src="fileimg.png" alt="file icon" style="margin-left: 10px;">
+<h4>cricket.mp4</h4>
+<p>54 minutes ago</p>
+  </div>
+</div>
+<div>
+  <br>
+  <button class="btn tooltip" onclick="downloadalert('file')"><i class="fa fa-download"></i> <span class="tooltiptext">Download file</span></button>
+  <button class="btn tooltip" onclick="document.getElementById('id03').style.display='block'"> <i class="fa fa-upload"></i><span class="tooltiptext">Upload/Merge files</span> </button>
+</div>
+  </div>
+  <!--download div-->
+  <div style="margin-top: 50px">
+    
+    <button class="btn" onclick="downloadalert('folder')" style="margin: 0px;"><i class="fa fa-download"></i> Download Folder</button>
+  </div>
+</div>
+    
+<div class="flex-container" style="float: right; width: 20%; padding-right: 10px; border-left: 1px solid black;">
+<!-- Personal icon / Logout  -->
+    <div style= "min-width: 250px; min-height: 150px;">
+      <!-- Dropdown for logout/advanced features -->
+    <div class="dropdown" style=" min-width: 250px; min-height: 150px; text-align: center; padding-top: 20px">
+       <!-- <button id="profileButton" onclick="openDropDown()" class="w3-button w3-blue">JM</button>-->
+       <!--picture of profile icon taken from https://www.flaticon.com/authors/freepik-->
+        <img src="user.png" style=" width: 150px; background-color: transparent; margin-left: 32%;  margin-right: 30%;" class="dropbtn" onclick="openDropDown()">
+        <div id="drop-down-options" class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+        <a href="#" class="w3-bar-item w3-button" onclick="logoutalert()">Log Out</a>
+        <a href="#" class="w3-bar-item w3-button w3-border-top">Advanced</a>
+        </div>
+        </div>
+        
+    </div>
+    <br>
+    <!-- Comment Log -->
+    <div class="w3-border-top w3-border-bottom w3-border-right w3-border-black w3-sand">
+    <h4 style="text-align: center">Comment Log</h4>
+    </div>
+    
+    <div class=" w3-border-bottom w3-border-right w3-border-black">
+      <!-- List of Example comments/Messages -->
+    <div class="w3-container w3-light-grey w3-border-bottom w3-border-grey" style="padding-left: 10px; padding-right: 10px">
+    <h6>Rick S</h6>
+    <p>Hey, I'm going to merge login.html.</p>
+    <span class="time-right" style="float: right; font-size: 12px">11:00</span>
+        <br>
+        </div>
+
+    <div class="w3-container w3-border-bottom w3-border-grey" style="padding-left: 10px; padding-right: 10px">
+    <h6>Morty P</h6>
+    <p>Yea sure</p>
+    <span class="time-left" style="float: right; font-size: 12px">11:01</span>
+        <br>
+        </div>
+
+        <div class="w3-container w3-border-bottom w3-border-grey w3-light-grey" style="padding-left: 10px; padding-right: 10px">
+          <p><i> Rick S merged login.html</i><span class="time-left" style="float: right; font-size: 12px">11:01</span></p>
+              </div>
+    <div class="w3-container w3-border-bottom w3-border-grey" style="padding-left: 10px; padding-right: 10px">
+    <h6>Rick S</h6>
+    <p>Cool done, do you want to see what I have made?</p>
+    <span class="time-right" style="float: right; font-size: 12px">11:02</span>
+        <br>
+        </div>
+
+    <div class="w3-container w3-light-grey w3-border-bottom w3-border-grey" style="padding-left: 10px; padding-right: 10px">
+    <h6>Morty P</h6>
+    <p>Yup, I'll download it later tonight.</p>
+    <span class="time-left" style="float: right; font-size: 12px">11:05</span>
+        <br>
+        </div>
+    
+        <!-- Input box for new comments -->
+   <div class="input-group" style="padding: 5px; margin-top: 100px;">
+  <input type="text" class="form-control" style="width: 70%">
+  <span class="input-group-btn">
+    <!-- send button -->
+    <button class="btn btn-default" type="button" style="float:right; height: 30px; width: 25%; padding-top: 0%;">send</button>
+  </span>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+  var divItems = document.getElementsByClassName("files");
+var openInbox = document.getElementById("myBtn");
+openInbox.click();
+
+
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Makes the input division appear & changes the element colour
+myFunc('Tasklist')
+function myFunc(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show"; 
+    x.previousElementSibling.className += " w3-purple";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-purple", "");
+  }
+}
+
+//Makes the files appear when a folder is clicked + Hides previous files 
+function doShare(fileName) {
+  var i;
+  var x = document.getElementsByClassName("list");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  
+  document.getElementById(fileName).style.display = "block";  
+}
+
+//Changes the breadcrumb
+function changeBreadcrumb(folderName) {
+  var breadcrumb = document.getElementById("breadcrumb");
+  breadcrumb.textContent = "HCI/" + folderName;
+}
+
+//Changes colour of a selected item
+function selected(item) {
+  console.log("clicked file");
+    this.clear();
+    item.style.backgroundColor = 'lightgrey';
+}
+
+function clear() {
+    for(var i=0; i < divItems.length; i++) {
+        var item = divItems[i];
+        item.style.backgroundColor = 'white';
+    }
+}
+
+//Alert box when download is clicked
+function downloadalert(element) {
+  if (element === "file") {
+  alert("You have successfully downloaded the selected file")
+  } else if (element === "folder") {
+    alert("You have successfully downloaded the folder")
+  } else {
+    alert("You have successfully exported the Project")
+  }
+}
+
+//Creates a purple border for the selected folder
+function highlight(current) {
+  var elements
+  elements = document.getElementsByClassName("foldericon")
+  console.log(elements);
+  for(var i=0; i < elements.length; i++) {
+    var item = elements[i];
+    item.style.border = "none"
+  }
+  current.style.border = "2px solid purple"
+}
+
+//calls the highlight function with the correct reference
+function highlightOuter(stringId) {
+  highlight(document.getElementById(stringId))
+}
+
+//Alert box when share button is clicked
+function sharealert(){
+  alert("The project has been successfully shared")
+}
+
+//Alert box when new project is created
+function createalert(){
+  alert("A new project has been created")
+}
+
+//Alert box when the log out button is clicked
+function logoutalert(){
+  alert("You have successfully logged out")
+}
+
+</script>
+
+<script>
+var openTab = document.getElementById("firstTab");
+openTab.click();
+
+var openlist = document.getElementById("firstfolder");
+openlist.click();
+    
+function openDropDown() {
+  var x = document.getElementById("drop-down-options");
+  if (x.className.indexOf("w3-show") == -1) { 
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html> 
+
